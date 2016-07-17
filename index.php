@@ -150,9 +150,8 @@
 						<?php
 							require_once 'config.php';
 							
-							$stmt = $dbcon->prepare('SELECT * FROM c_locn_cde');
-							$stmt->execute();
-							
+								$stmt = $dbcon->prepare("SELECT * FROM c_locn_cde WHERE stor_nme='Strip'");
+								$stmt->execute();
 							while($row=$stmt->fetch(PDO::FETCH_ASSOC))
 							{
 								extract($row);
