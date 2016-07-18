@@ -6,7 +6,7 @@ $(document).ready(function()
   $.ajax
   ({
    url: 'getlocation.php',
-   data: 'action=showAll', 
+   data: 'action=showAll',
    cache: false,
    success: function(r)
    {
@@ -23,8 +23,9 @@ $(document).ready(function()
  $("#getlocation").change(function()
  {    
   var id = $(this).find(":selected").val();
-
+  
   var dataString = 'action='+ id;
+ 
     
   $.ajax
   ({
@@ -39,5 +40,18 @@ $(document).ready(function()
  })
  
  
+ 
+ $.ajax({
+    type: 'POST',
+    url: '../getlocation.php',
+    success: function(result) {
+        console.log(result);
+        $('#apntdate').datetimepicker({
+            format: 'DD/MM/YYYY - H:mm',
+            minDate: new Date(),
+            daysOfWeekDisabled: [result]
+        });
+    }
+});
  // code to get all records from table via select box
 });
