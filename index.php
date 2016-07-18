@@ -8,7 +8,7 @@
 	<title>Strip Appointment Time</title>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<!--<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> -->
 	
 	<script src="js/angular.js"></script>
     <script src="js/angular-animate.js"></script>
@@ -183,14 +183,8 @@
 						$('#apntdate').datepicker({ 
 							startDate: date
 						});
-						
-
-					   /* $('#example1').datepicker({
-							format: "dd/mm/yyyy"
-						});  */
-					
 					});
-        </script>
+				</script>
 				<div class="" id="display" >
 						<!-- Records will be displayed here/from branches -->
 				</div>

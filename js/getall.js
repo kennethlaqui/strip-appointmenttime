@@ -41,17 +41,6 @@ $(document).ready(function()
  
  
  
- $.ajax({
-    type: 'POST',
-    url: '../getlocation.php',
-    success: function(result) {
-        console.log(result);
-        $('#apntdate').datetimepicker({
-            format: 'DD/MM/YYYY - H:mm',
-            minDate: new Date(),
-            daysOfWeekDisabled: [result]
-        });
-    }
-});
+
  // code to get all records from table via select box
 });

@@ -3,10 +3,9 @@
 	include('config.php');
 	
 	$action = $_REQUEST['action'];
-	$week_day = array('0','6');
-$string = implode(',', $week_day);
+
 	
-	$daynum = date("w", strtotime("saturday	")); //problem
+	$daynum = date("w", strtotime("saturday")); //problem
 	
 	if($action=="showAll"){
 		
