@@ -1,3 +1,4 @@
+<!-- © Bootstrap by Azmind. Customized by VLI -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +8,7 @@
 	<title>Strip Appointment Time</title>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	
-<!--<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> -->
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 	
 	<script src="js/angular.js"></script>
     <script src="js/angular-animate.js"></script>
@@ -162,6 +163,7 @@
 						?>
 					</select>
 				</div>
+				
 				<div class="form-group">
 					<input type="text" class="form-control" id="therapist" name="therapist" placeholder="Therapist">
 				</div>
@@ -171,14 +173,24 @@
 				<div class="form-group">
 					<input type="text" id="apntdate" name="apntdate" class="form-control" placeholder="Appointment Date">
 				</div>
+			
 				<script type="text/javascript">
-						$(function () {
-						$('#apntdate').datepicker();
-						$("#apntdate").on("change",function(){
-							var selected = $(this).val();
+					// When the document is ready
+					$(document).ready(function () {
+						var date = new Date();
+						date.setDate(date.getDate()-1);
+						
+						$('#apntdate').datepicker({ 
+							startDate: date
 						});
-						});
-				</script>
+						
+
+					   /* $('#example1').datepicker({
+							format: "dd/mm/yyyy"
+						});  */
+					
+					});
+        </script>
 				<div class="" id="display" >
 						<!-- Records will be displayed here/from branches -->
 				</div>
@@ -229,10 +241,9 @@
 </footer>
 
 	
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!--Jquery -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+ 
 
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/charleft.js"></script>
 	<script src="js/jquery.backstretch.min.js"></script>
