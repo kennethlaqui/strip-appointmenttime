@@ -51,7 +51,8 @@
       
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-	<script type="text/javascript" src="js/getall.js"></script>
+	
+	<!--<script type="text/javascript" src="js/getall.js"></script>-->
 <!--	<script type="text/javascript" src="js/foodstore.js"> </script> -->
 	
   </head>
@@ -150,7 +151,7 @@
 				</div>		
 				<div class="form-group">
 					<select id="getlocation" name="getlocation" class="form-control">
-						<option value="showAll" selected="selected">Show all branches</option>
+					<!--	<option value="showall" selected="selected">Show all branches</option>-->
 						<!-- To display all data from database going to this select form -->
 						<?php
 							require_once 'config.php';
@@ -166,69 +167,42 @@
 							}
 						?>
 						
-						<!--<script>
-							$(document).ready(	function(){
-						$('#getlocation').on('change',function(){
-							var gloc = $(this).find(":selected").val();
-							if(gloc){
-								$.ajax({
-									type:'POST',
-									url:'getlocation.php',
-									data:'action='+gloc,
-									success:function(html){
-										$('#display').html(html);
-										alert('success in getlocation '+ gloc);
-									},
-										error: function(){
-										alert('failure');
-										}
-									
-								});
-							}
-						});
-					
-					});
-						</script> -->
+						
 					</select>
 				</div>
-				<div class="form-group">
-				<select class="form-control" id="dayofweek" name="dayofweek" selected="selected">
-					<option value="0">Sunday</option>
-					<option value="1">Monday</option>
-					<option value="2">Tuesday</option>
-					<option value="3">Wednesday</option>
-					<option value="4">Thursday</option>
-					<option value="5">Friday</option>
-					<option value="6">Saturday</option>
-				</select>
-				
+			
 					
-			<script type="text/javascript">
+		<script type="text/javascript">
 				//select first the branches
 					$(document).ready(function(){
-						$('#dayofweek').change(function(){
-							var dayofweekval = $(this).val();
-							if(dayofweekval){
+						$('#clickme').on('click',function(){
+							var numericdayweek = $('#numericdayweek').val();
+							var getlocation = $('#getlocation').val();
+							var dataString = 'numericdayweek='+ numericdayweek + '&getlocation=' + getlocation;
+				
 								$.ajax({
-									type:'GET',
-									url:'getlocation.php',
-									data:'dayofweek='+ dayofweekval,
-									success:function(html){
-										$('#display').html(html);
-										alert('success in dayofweek '+ dayofweekval);
-									},
+									type: 'POST',
+									url: 'getlocation.php',
+									data: dataString,
+									success: function(r)
+								   {
+									$("#display").html(r);
+									console.log('success in getlocation'+getlocation);
+									
+									//alert('sucess in numericdayweek'+numericdayweek);
+								   } ,
 									error: function(){
 										alert('failure');
 									}
 								});
-							}
+							
 						});
 					
 					});
 					
-				</script>
+				</script> 
 				
-				</div>
+			
 				
 				<div class="form-group">
 					<input type="text" class="form-control" id="therapist" name="therapist" placeholder="Therapist">
@@ -243,17 +217,28 @@
 				
 				</div>
 				<div id="form-group" >
+				<!-- get the value of this -->
 					<input type="text" id="dspldate" name="dspldate" class="form-control" placeholder="dspldate Date">
 				</div>
 				<div id="form-group" >
+				<!-- display day of week. e.g. thursday -->
 					<input type="text" id="dateday" name="dateday" class="form-control" placeholder="datenumber Date">
 				</div>
 				<div id="form-group" >
+				<!-- numeric representation of day of week e.g thursday = 3 -->
 					<input type="text" id="numericdayweek" name="numericdayweek" class="form-control" placeholder="datenumber Date">
 				</div>
+				<div id="form-group" >
+				<!-- numeric representation of day of week e.g thursday = 3 -->
+				<button type="button" id="clickme" name="clickme" class="form-control">Check available time...</button>
+				</div>
+
 				
 				<script type="text/javascript">
+				
+					
 					$(document).ready(function () {
+						//fixed. 
 						//do the trick
 						//hide now the input text
 						$('#dspldate').hide();
@@ -281,14 +266,15 @@
 							document.getElementById('dspldate').value = eventDate;		
 							document.getElementById('dateday').value = day;	
 							document.getElementById('numericdayweek').value = numericres;	
-							
 								
 						}); 	
 							
 					});		
 				</script>	
-
-				<div class="" id="display" >
+				<div class ="form-group">
+				
+				</div>
+				<div class="form-group" id="display">
 						<!-- Records will be displayed here/from branches -->
 				</div> 
 				<div class="form-group">

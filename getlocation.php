@@ -1,30 +1,19 @@
-
 <?php
-
 
 	include('config.php');
 	
-
-	$action = $_REQUEST['action'];
-	
-	//$dayofweek = isset($_GET['dayofweek']);
-	//$dayofweek = isset($_REQUEST['dayofweek']);
-	$dayofweek = isset($_GET['dayofweek']);
+	$getlocation = $_POST['getlocation'];
+	$numericdayweek = $_POST['numericdayweek'];
 	
 	
-	//$daynum = date("w", strtotime($dayofweek)); //problem
-	
-	
-	
-	if($action=="showAll"){
+	if($_POST['getlocation']){
 		
-		$stmt=$dbcon->prepare('SELECT std_time FROM c_validtme ORDER BY dsplsort');
-		$stmt->execute();
+		//get the day number 
+		$stmt=$dbcon->prepare('SELECT std_time FROM c_validtme WHERE locn_cde=:cid and day_numb=:daynumcode');
+		$stmt->execute(array(':cid'=>$getlocation, ':daynumcode'=>$numericdayweek));
 		
 	}else{
-		//get the day number 
-		$stmt=$dbcon->prepare('SELECT std_time FROM c_validtme WHERE locn_cde=:cid and day_numb=:daynumcode ORDER BY dsplsort');
-		$stmt->execute(array(':cid'=>$action, ':daynumcode'=>$dayofweek));
+		echo("error in post");
 		
 	}
 	
@@ -65,5 +54,4 @@
 	
 	
 	?>
-	
 	
