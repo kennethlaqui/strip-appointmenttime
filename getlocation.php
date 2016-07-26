@@ -1,11 +1,20 @@
+
 <?php
+
 
 	include('config.php');
 	
-	$action = $_REQUEST['action'];
 
+	$action = $_REQUEST['action'];
 	
-	$daynum = date("w", strtotime("saturday")); //problem
+	//$dayofweek = isset($_GET['dayofweek']);
+	//$dayofweek = isset($_REQUEST['dayofweek']);
+	$dayofweek = isset($_GET['dayofweek']);
+	
+	
+	//$daynum = date("w", strtotime($dayofweek)); //problem
+	
+	
 	
 	if($action=="showAll"){
 		
@@ -15,7 +24,7 @@
 	}else{
 		//get the day number 
 		$stmt=$dbcon->prepare('SELECT std_time FROM c_validtme WHERE locn_cde=:cid and day_numb=:daynumcode ORDER BY dsplsort');
-		$stmt->execute(array(':cid'=>$action, ':daynumcode'=>$daynum));
+		$stmt->execute(array(':cid'=>$action, ':daynumcode'=>$dayofweek));
 		
 	}
 	
@@ -56,4 +65,5 @@
 	
 	
 	?>
+	
 	

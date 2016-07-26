@@ -51,10 +51,11 @@
       
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-	<script type="text/javascript" src="js/getall.js"> </script>
+	<script type="text/javascript" src="js/getall.js"></script>
+<!--	<script type="text/javascript" src="js/foodstore.js"> </script> -->
 	
   </head>
-  <body>
+  <body > <!-- onload="process()" -->
 <style type="text/css">
 
 
@@ -138,15 +139,18 @@
 				<div class="form-group">
 					<input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
 				</div>
+				
+			
+			
 				<div class="form-group">
-					<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number">
+				<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number">
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" id="telno" name="telno" placeholder="Tel. Number">
 				</div>		
 				<div class="form-group">
 					<select id="getlocation" name="getlocation" class="form-control">
-					<option value="showAll" selected="selected">Show all branches</option>
+						<option value="showAll" selected="selected">Show all branches</option>
 						<!-- To display all data from database going to this select form -->
 						<?php
 							require_once 'config.php';
@@ -161,33 +165,132 @@
 								<?php
 							}
 						?>
+						
+						<!--<script>
+							$(document).ready(	function(){
+						$('#getlocation').on('change',function(){
+							var gloc = $(this).find(":selected").val();
+							if(gloc){
+								$.ajax({
+									type:'POST',
+									url:'getlocation.php',
+									data:'action='+gloc,
+									success:function(html){
+										$('#display').html(html);
+										alert('success in getlocation '+ gloc);
+									},
+										error: function(){
+										alert('failure');
+										}
+									
+								});
+							}
+						});
+					
+					});
+						</script> -->
 					</select>
+				</div>
+				<div class="form-group">
+				<select class="form-control" id="dayofweek" name="dayofweek" selected="selected">
+					<option value="0">Sunday</option>
+					<option value="1">Monday</option>
+					<option value="2">Tuesday</option>
+					<option value="3">Wednesday</option>
+					<option value="4">Thursday</option>
+					<option value="5">Friday</option>
+					<option value="6">Saturday</option>
+				</select>
+				
+					
+			<script type="text/javascript">
+				//select first the branches
+					$(document).ready(function(){
+						$('#dayofweek').change(function(){
+							var dayofweekval = $(this).val();
+							if(dayofweekval){
+								$.ajax({
+									type:'GET',
+									url:'getlocation.php',
+									data:'dayofweek='+ dayofweekval,
+									success:function(html){
+										$('#display').html(html);
+										alert('success in dayofweek '+ dayofweekval);
+									},
+									error: function(){
+										alert('failure');
+									}
+								});
+							}
+						});
+					
+					});
+					
+				</script>
+				
 				</div>
 				
 				<div class="form-group">
 					<input type="text" class="form-control" id="therapist" name="therapist" placeholder="Therapist">
 				</div>
+				
 				<div class="form-group">
 					<input type="text" class="form-control" id="treatment" name="treatment" placeholder="Treatment">
 				</div>
+				
 				<div class="form-group">
 					<input type="text" id="apntdate" name="apntdate" class="form-control" placeholder="Appointment Date">
+				
 				</div>
-			
+				<div id="form-group" >
+					<input type="text" id="dspldate" name="dspldate" class="form-control" placeholder="dspldate Date">
+				</div>
+				<div id="form-group" >
+					<input type="text" id="dateday" name="dateday" class="form-control" placeholder="datenumber Date">
+				</div>
+				<div id="form-group" >
+					<input type="text" id="numericdayweek" name="numericdayweek" class="form-control" placeholder="datenumber Date">
+				</div>
+				
 				<script type="text/javascript">
-					// When the document is ready
 					$(document).ready(function () {
+						//do the trick
+						//hide now the input text
+						$('#dspldate').hide();
+						$('#dateday').hide();
+						$('#numericdayweek').hide();
 						var date = new Date();
-						date.setDate(date.getDate()-1);
-						
+						date.setDate(date.getDate()-0);
 						$('#apntdate').datepicker({ 
-							startDate: date
+							startDate: date,
+							 autoclose: true
+							
 						});
-					});
-				</script>
+					$('#apntdate').change(function () {
+						var eventDate = $('#apntdate').val();
+						var dateElement = eventDate.split("/");
+						var dateFormat = dateElement[2]+'-'+dateElement[0]+'-'+dateElement[1];
+						var date = new Date(dateFormat+'T10:00:00Z'); 
+						var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+						var numericday = ["0", "1", "2", "3", "4", "5", "6"];
+						var day = weekday[date.getDay()];
+						var numericres = numericday[date.getDay()];
+						$('#apntdate').val($('#apntdate').val() + ' - ' + day);
+								
+								//$("#dspldate").html(eventDate);
+							document.getElementById('dspldate').value = eventDate;		
+							document.getElementById('dateday').value = day;	
+							document.getElementById('numericdayweek').value = numericres;	
+							
+								
+						}); 	
+							
+					});		
+				</script>	
+
 				<div class="" id="display" >
 						<!-- Records will be displayed here/from branches -->
-				</div>
+				</div> 
 				<div class="form-group">
 				<textarea class="form-control" type="textarea" id="msg" name="msg" placeholder="Message" maxlength="140" rows="7"></textarea>
 					<span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    

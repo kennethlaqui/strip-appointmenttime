@@ -46,7 +46,7 @@
 	$telno = $_POST["telno"];
 	$therapist = $_POST["therapist"];
 	$treatmnt = $_POST["treatment"];
-	$apntdate = $_POST["apntdate"];
+	$apntdate = $_POST["dspldate"];
 	$apnttime = $_POST["getstd"];
 	date_default_timezone_set('Asia/Manila');
 	$today = date("m.d.y");
