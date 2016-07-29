@@ -178,33 +178,7 @@
 						
 						});
 					});
-				</script> 
-				<!--<script type="text/javascript">
-				//select first the branches
-					$(document).ready(function(){
-						$('clickme').on('click',function(){
-						var std = $('#get_std').val();
-						var getlocation = $('#getlocation').val();
-						var dataString = 'std='+ std + '&getlocation=' + getlocation;
-							$.ajax({
-								type: 'POST',
-								url: 'getmil.php',
-								data: dataString,
-								success: function(r)
-							   {
-								$("#getmildis").html(r);
-								console.log('success in getlocation'+getlocation);
-								//alert('sucess in numericdayweek'+numericdayweek);
-							   },
-								error: function(){
-									alert('failure');
-								}
-							});
-						});
-						
-					});
-				</script> -->
-				
+				</script> 				
 				<div class="form-group">
 					<input type="text" class="form-control" id="therapist" name="therapist" placeholder="Therapist">
 				</div>
@@ -265,7 +239,7 @@
 							document.getElementById('dspldate').value = eventDate;	
 							document.getElementById('dateday').value = day;	
 							document.getElementById('numericdayweek').value = numericres;
-							autoclose: true						
+										
 							
 						});
 					
