@@ -8,63 +8,34 @@
 	<title>Strip Appointment Time</title>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	
-<!--<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> -->
-	
 	<script src="js/angular.js"></script>
     <script src="js/angular-animate.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-    <script src="js/example.js"></script>
-	
-	<script src="js/placeholder.js"></script>
-   
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/timeselect.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style2.css">
-	<link rel="stylesheet" href="css/stylse.css">
+	<!--<link rel="stylesheet" href="css/stylse.css">-->
 	<link rel="stylesheet" href="css/form-elements.css">
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	
 	<link rel="stylesheet" href="css/footer.css">
-	
-	<!-- timepicker css -->
-	
-    
-	<!-- plug-ins -->
 	<!-- js -->
-	
 	<script src="js/jquery-3.0.0.min.js"></script>
 	<script src="js/jquery.js"></script>
+
 	<!-- datepciker -->
-	
-		
-<!-- <script src="js/jquery-1.12.4.js"></script>
-	 <script src="js/jquery-ui.js"></script>
-	 <link rel="stylesheet" href="css/jquery-ui.css"> -->
 	 <script src="js/bootstrap-datepicker.js"></script>
 	 <link rel="stylesheet" href="css/datepicker.css">
 
- 
-	<!-- timepicker -->
-	<link type="text/css" href="css/bootstrap.min.css" />
-    <link type="text/css" href="css/bootstrap-timepicker.min.css" />
-      
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-	
-	<!--<script type="text/javascript" src="js/getall.js"></script>-->
-<!--	<script type="text/javascript" src="js/foodstore.js"> </script> -->
-	
-  </head>
-  <body > <!-- onload="process()" -->
+</head>
+<body >
 <style type="text/css">
-
-
 #eventForm .form-control-feedback {
     top: 0;
     right: -15px;
 }gb l,humn
 </style>
+
 	<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -98,9 +69,7 @@
 				</div>
 			</div>
 		</nav>
-		
 
-		
 		<div class="top-content">
         <div class="inner-bg">     
 		<div class="container">
@@ -111,7 +80,6 @@
 				<div class="description">
 					<h1>
 						Welcome to the Strip: Ministry of Waxing, the global authority in hair removal with 42 parlours in 9 cities worldwide.
-						
 					</h1>
 				</div>
 			</div>
@@ -139,10 +107,7 @@
 				</div>
 				<div class="form-group">
 					<input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
-				</div>
-				
-			
-			
+				</div>	
 				<div class="form-group">
 				<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number">
 				</div>
@@ -151,70 +116,103 @@
 				</div>		
 				<div class="form-group">
 					<select id="getlocation" name="getlocation" class="form-control">
-					<!--	<option value="showall" selected="selected">Show all branches</option>-->
 						<!-- To display all data from database going to this select form -->
 						<?php
 							require_once 'config.php';
-							
-								$stmt = $dbcon->prepare("SELECT * FROM c_locn_cde WHERE stor_nme='Strip'");
-								$stmt->execute();
-							while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-							{
+					
+							$stmt = $dbcon->prepare("SELECT * FROM c_locn_cde WHERE stor_nme='Strip'");
+							$stmt->execute();
+							while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
 								extract($row);
 								?>
 								<option value="<?php echo $locn_cde; ?>"><?php echo $locn_nme; ?></option>
 								<?php
 							}
 						?>
-						
-						
 					</select>
 				</div>
-			
-					
-		<script type="text/javascript">
+		
+				<script type="text/javascript">
 				//select first the branches
 					$(document).ready(function(){
-						$('#clickme').on('click',function(){
-							var numericdayweek = $('#numericdayweek').val();
-							var getlocation = $('#getlocation').val();
-							var dataString = 'numericdayweek='+ numericdayweek + '&getlocation=' + getlocation;
-				
-								$.ajax({
-									type: 'POST',
-									url: 'getlocation.php',
-									data: dataString,
-									success: function(r)
-								   {
-									$("#display").html(r);
-									console.log('success in getlocation'+getlocation);
-									
-									//alert('sucess in numericdayweek'+numericdayweek);
-								   } ,
-									error: function(){
-										alert('failure');
-									}
-								});
-							
+						var date = new Date();
+						date.setDate(date.getDate()-0);
+						$('#apntdate').datepicker({startDate: date, autoclose:true}).on('changeDate',function(){
+						var numericdayweek = $('#numericdayweek').val();
+						var getlocation = $('#getlocation').val();
+						var dataString = 'numericdayweek='+ numericdayweek + '&getlocation=' + getlocation;
+							$.ajax({
+								type: 'POST',
+								url: 'getlocation.php',
+								data: dataString,
+								success: function(r)
+							   {
+								$("#display").html(r);
+								console.log('success in getlocation'+getlocation);
+								//alert('sucess in numericdayweek'+numericdayweek);
+							   },
+								error: function(){
+									alert('failure');
+								}
+							});
+						
 						});
-					
+						$('#getlocation').on('change',function(){
+						var numericdayweek = $('#numericdayweek').val();
+						var getlocation = $('#getlocation').val();
+						var dataString = 'numericdayweek='+ numericdayweek + '&getlocation=' + getlocation;
+							$.ajax({
+								type: 'POST',
+								url: 'getlocation.php',
+								data: dataString,
+								success: function(r)
+							   {
+								$("#display").html(r);
+								console.log('success in getlocation'+getlocation);
+								//alert('sucess in numericdayweek'+numericdayweek);
+							   },
+								error: function(){
+									alert('failure');
+								}
+							});
+						
+						});
 					});
-					
 				</script> 
-				
-			
+				<!--<script type="text/javascript">
+				//select first the branches
+					$(document).ready(function(){
+						$('clickme').on('click',function(){
+						var std = $('#get_std').val();
+						var getlocation = $('#getlocation').val();
+						var dataString = 'std='+ std + '&getlocation=' + getlocation;
+							$.ajax({
+								type: 'POST',
+								url: 'getmil.php',
+								data: dataString,
+								success: function(r)
+							   {
+								$("#getmildis").html(r);
+								console.log('success in getlocation'+getlocation);
+								//alert('sucess in numericdayweek'+numericdayweek);
+							   },
+								error: function(){
+									alert('failure');
+								}
+							});
+						});
+						
+					});
+				</script> -->
 				
 				<div class="form-group">
 					<input type="text" class="form-control" id="therapist" name="therapist" placeholder="Therapist">
 				</div>
-				
 				<div class="form-group">
 					<input type="text" class="form-control" id="treatment" name="treatment" placeholder="Treatment">
 				</div>
-				
 				<div class="form-group">
 					<input type="text" id="apntdate" name="apntdate" class="form-control" placeholder="Appointment Date">
-				
 				</div>
 				<div id="form-group" >
 				<!-- get the value of this -->
@@ -228,16 +226,19 @@
 				<!-- numeric representation of day of week e.g thursday = 3 -->
 					<input type="text" id="numericdayweek" name="numericdayweek" class="form-control" placeholder="datenumber Date">
 				</div>
-				<div id="form-group" >
-				<!-- numeric representation of day of week e.g thursday = 3 -->
-				<button type="button" id="clickme" name="clickme" class="form-control">Check available time...</button>
+				<!--<div id="form-group" >
+				<input type="text" id="duptime" name="duptime" class="form-control" placeholder="duptime Date">
+				</div> -->
+				<div class="form-group" id="display">
+						<!-- Records will be displayed here/from branches -->
 				</div>
-
+			<!--	<div id="form-group" >
+				<!-- numeric representation of day of week e.g thursday = 3 
+				<button type="button" id="clickme" name="clickme" class="form-control">Check available time...</button>
+				</div> -->
 				
 				<script type="text/javascript">
-				
-					
-					$(document).ready(function () {
+					$(document).ready(function(){
 						//fixed. 
 						//do the trick
 						//hide now the input text
@@ -249,7 +250,6 @@
 						$('#apntdate').datepicker({ 
 							startDate: date,
 							 autoclose: true
-							
 						});
 					$('#apntdate').change(function () {
 						var eventDate = $('#apntdate').val();
@@ -261,22 +261,22 @@
 						var day = weekday[date.getDay()];
 						var numericres = numericday[date.getDay()];
 						$('#apntdate').val($('#apntdate').val() + ' - ' + day);
-								
-								//$("#dspldate").html(eventDate);
-							document.getElementById('dspldate').value = eventDate;		
+							//$("#dspldate").html(eventDate);
+							document.getElementById('dspldate').value = eventDate;	
 							document.getElementById('dateday').value = day;	
-							document.getElementById('numericdayweek').value = numericres;	
-								
-						}); 	
+							document.getElementById('numericdayweek').value = numericres;
+							autoclose: true						
 							
+						});
+					
+					
 					});		
-				</script>	
-				<div class ="form-group">
+				</script>
 				
+				
+				
+			<div class ="form-group">
 				</div>
-				<div class="form-group" id="display">
-						<!-- Records will be displayed here/from branches -->
-				</div> 
 				<div class="form-group">
 				<textarea class="form-control" type="textarea" id="msg" name="msg" placeholder="Message" maxlength="140" rows="7"></textarea>
 					<span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
@@ -290,7 +290,7 @@
 		</div>
 		</div>
 		</div>
-	
+		
 	<footer class="text-center">
     <div class="footer-above">
         <div class="container">
@@ -322,21 +322,11 @@
         </div>
     </div>
 </footer>
-
-	
- 
-
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/charleft.js"></script>
 	<script src="js/jquery.backstretch.min.js"></script>
     <script src="js/retina-1.1.0.min.js"></script>
-    <script src="js/scripts.js"></script>
-		
-		
-		
-     
-    
-		
+    <script src="js/scripts.js"></script>	
   </body>
 </html>

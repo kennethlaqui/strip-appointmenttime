@@ -3,14 +3,14 @@
 	include('config.php');
 	
 	$getlocation = $_POST['getlocation'];
-	$numericdayweek = $_POST['numericdayweek'];
+	$std = $_POST['std'];
 	
 	
 	if($_POST['getlocation']){
 		
 		//get the day number 
-		$stmt=$dbcon->prepare('SELECT std_time FROM c_validtme WHERE locn_cde=:cid and day_numb=:daynumcode ORDER BY dsplsort ASC');
-		$stmt->execute(array(':cid'=>$getlocation, ':daynumcode'=>$numericdayweek));
+		$stmt=$dbcon->prepare('SELECT mil_time FROM c_validtme WHERE locn_cde=:cid and day_numb=:daynumcode ORDER BY std_time');
+		$stmt->execute(array(':cid'=>$getlocation, ':daynumcode'=>$std));
 		
 	}else{
 		echo("error in post");
@@ -29,12 +29,11 @@
 			?>
 			<div class="form-group">
 			
-			<select name="getstd" id="getstd" class="form-control">
+			<select name="getmil" id="getmil" class="form-control">
 				<?php foreach ($stmt as $row): ?>
-				<option value="<?=$row["std_time"]?>"><?=$row["std_time"]?></option>
+				<option><?=$row["mil_time"]?></option>
 				<?php endforeach ?>
 				</select>
-				
 			</div>
 			<?php		
 		}
@@ -44,9 +43,9 @@
 		?>
        			<div class="form-group" >
 			
-			<select name="getstd" id="getstd" class="form-control">
+			<select name="getmil" id="getmil" class="form-control">
 				<?php foreach ($stmt as $row): ?>
-				<option value="<?=$row["std_time"]?>"><?=$row["std_time"]?></option>
+				<option><?=$row["mil_time"]?></option>
 				<?php endforeach ?>
 				</select>
 			</div>
