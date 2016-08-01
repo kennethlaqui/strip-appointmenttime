@@ -15,7 +15,7 @@
 	$dbname = 'DBAppointment';  
 	$dbuser = 'kennethlaqui';                  
 	$dbpass = 'mAsterkkl082695';  
-*/
+
 	try
 	{
 		$dbcon = new PDO("sqlsrv:Server={$dbhost};Database={$dbname}",$dbuser,$dbpass);
