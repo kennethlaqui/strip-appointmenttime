@@ -9,7 +9,7 @@
 	if($_POST['getlocation']){
 		
 		//get the day number 
-		$stmt=$dbcon->prepare('SELECT std_time FROM c_validtme WHERE locn_cde=:cid and day_numb=:daynumcode ORDER BY dsplsort ASC');
+		$stmt=$dbcon->prepare('SELECT std_time, mil_time FROM c_validtme WHERE locn_cde=:cid and day_numb=:daynumcode ORDER BY dsplsort ASC');
 		$stmt->execute(array(':cid'=>$getlocation, ':daynumcode'=>$numericdayweek));
 		
 	}else{
@@ -31,11 +31,12 @@
 			
 			<select name="getstd" id="getstd" class="form-control">
 				<?php foreach ($stmt as $row): ?>
-				<option value="<?=$row["std_time"]?>"><?=$row["std_time"]?></option>
+				<option value="<?=$row["mil_time"]?>"><?=$row["std_time"]?></option>
 				<?php endforeach ?>
 				</select>
 				
 			</div>
+			
 			<?php		
 		}
 		
@@ -46,7 +47,7 @@
 			
 			<select name="getstd" id="getstd" class="form-control">
 				<?php foreach ($stmt as $row): ?>
-				<option value="<?=$row["std_time"]?>"><?=$row["std_time"]?></option>
+				<option value="<?=$row["mil_time"]?>"><?=$row["std_time"]?></option>
 				<?php endforeach ?>
 				</select>
 			</div>

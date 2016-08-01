@@ -5,11 +5,11 @@
 	if(isset($_POST['register']))
 	{
 		
-	$serverName = "appointmentsrv.database.windows.net";
-	//$serverName = "LAQUI\SQLEXPRESS";
+	//$serverName = "appointmentsrv.database.windows.net";
+	$serverName = "LAQUI\SQLEXPRESS";
 	$connectionOptions = array("Database"=>"DBAppointment", 
-	"Uid"=>"kennethlaqui", "PWD"=>"mAsterkkl082695");
-	//"Uid"=>"vlilocalsql", "PWD"=>"mAsterkkl082695");
+	//"Uid"=>"kennethlaqui", "PWD"=>"mAsterkkl082695");
+	"Uid"=>"vlilocalsql", "PWD"=>"mAsterkkl082695");
 	
 	$conn = sqlsrv_connect($serverName, $connectionOptions);
 	
@@ -47,11 +47,12 @@
 	$therapist = $_POST["therapist"];
 	$treatmnt = $_POST["treatment"];
 	$apntdate = $_POST["dspldate"];
-	$apnttime = $_POST["getstd"];
+	$apnttime = $_POST["stdtime"];
 	date_default_timezone_set('Asia/Manila');
 	$today = date("m.d.y");
 	$branch = $_POST["getlocation"];
 	$msg = $_POST["msg"];
+	$valstd = $_POST["con_mil"];
 	$tsql = "INSERT INTO dbo.c_appointm (clnt_nme,
 									     emailadr,
 									     cel_numb,
@@ -63,8 +64,9 @@
 										 log_date,
 										 locn_cde,
 										 message_,
-										 cntrl_no)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";  
+										 cntrl_no,
+										 mil_time)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";  
 	$withparam = array($name, 
 					   $email, 
 					   $mobnum, 
@@ -76,7 +78,8 @@
 					   $today,
 					   $branch,
 					   $msg,
-					   $cntrlno);
+					   $cntrlno,
+					   $valstd);
 	$result = sqlsrv_query($conn, $tsql, $withparam);
 	if( $result === false )  
 	{  

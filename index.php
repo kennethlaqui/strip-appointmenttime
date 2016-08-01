@@ -131,7 +131,7 @@
 						?>
 					</select>
 				</div>
-		
+				
 				<script type="text/javascript">
 				//select first the branches
 					$(document).ready(function(){
@@ -148,7 +148,7 @@
 								success: function(r)
 							   {
 								$("#display").html(r);
-								console.log('success in getlocation'+getlocation);
+								console.log('success in numericdayweek '+numericdayweek);
 								//alert('sucess in numericdayweek'+numericdayweek);
 							   },
 								error: function(){
@@ -168,7 +168,7 @@
 								success: function(r)
 							   {
 								$("#display").html(r);
-								console.log('success in getlocation'+getlocation);
+								console.log('success in getlocation '+getlocation);
 								//alert('sucess in numericdayweek'+numericdayweek);
 							   },
 								error: function(){
@@ -205,6 +205,14 @@
 				</div> -->
 				<div class="form-group" id="display">
 						<!-- Records will be displayed here/from branches -->
+				</div>
+				<div id="form-group" >
+				<!-- display military time-->
+					<input type="text" id="con_mil" name="con_mil" class="form-control" placeholder="mil_time" required>
+				</div>
+				<div id="form-group" >
+				<!-- display standard time -->
+					<input type="text" id="stdtime" name="stdtime" class="form-control" placeholder="stdtime" required>
 				</div>
 			<!--	<div id="form-group" >
 				<!-- numeric representation of day of week e.g thursday = 3 
@@ -247,6 +255,47 @@
 					});		
 				</script>
 				
+				<script type="text/javascript">
+			//default - when user click the getstd/time
+					$(document).ready(function(){
+						$('#con_mil').hide();
+						$('#stdtime').hide();
+						$(document).on('click',"select#getstd",function(){
+						var valstd = $('#getstd').val();
+						var valoption = $( "select#getstd option:selected").text();
+						document.getElementById('con_mil').value = valstd;	
+						document.getElementById('stdtime').value = valoption;	
+						});
+					});
+				</script>
+				
+				<script type="text/javascript">
+				//validation - if user click message. Execute again this function
+					$(document).ready(function(){
+						$('#con_mil').hide();
+						$('#stdtime').hide();
+						$('#msg').on('click', function(){
+						var valstd = $('#getstd').val();
+						var valoption = $( "select#getstd option:selected").text();
+						document.getElementById('con_mil').value = valstd;	
+						document.getElementById('stdtime').value = valoption;	
+						});
+					});
+				</script>
+				
+				<script type="text/javascript">
+				//validation - if user change location, execute again this function
+					$(document).ready(function(){
+						$('#con_mil').hide();
+						$('#stdtime').hide();
+						$('#getlocation').on('click', function(){
+						var valstd = $('#getstd').val();
+						var valoption = $( "select#getstd option:selected").text();
+						document.getElementById('con_mil').value = valstd;	
+						document.getElementById('stdtime').value = valoption;	
+						});
+					});
+				</script>
 				
 				
 			<div class ="form-group">
