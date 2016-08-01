@@ -103,16 +103,16 @@
 				<h3 style="margin-bottom: 25px; text-align: center;"></h3>
 			
 				<div class="form-group">
-					<input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+					<input type="text" maxlength="30" class="form-control" id="name" name="name" placeholder="Name" required>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+					<input type="text" maxlength="30" class="form-control" id="email" name="email" placeholder="Email" required>
 				</div>	
 				<div class="form-group">
-				<input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number">
+				<input type="text" maxlength="11" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="telno" name="telno" placeholder="Tel. Number">
+					<input type="text" maxlength="8" class="form-control" id="telno" name="telno" placeholder="Tel. Number" required>
 				</div>		
 				<div class="form-group">
 					<select id="getlocation" name="getlocation" class="form-control">
@@ -180,10 +180,10 @@
 					});
 				</script> 				
 				<div class="form-group">
-					<input type="text" class="form-control" id="therapist" name="therapist" placeholder="Therapist">
+					<input type="text" maxlength="20" class="form-control" id="therapist" name="therapist" placeholder="Therapist">
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="treatment" name="treatment" placeholder="Treatment">
+					<input type="text" maxlength="20" class="form-control" id="treatment" name="treatment" placeholder="Treatment">
 				</div>
 				<div class="form-group">
 					<input type="text" id="apntdate" name="apntdate" class="form-control" placeholder="Appointment Date">
