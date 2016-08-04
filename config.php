@@ -7,8 +7,8 @@
 	$dbname = 'DBAppointment';  
 	$dbuser = 'vlilocalsql';                  
 	$dbpass = 'mAsterkkl082695';  
-	
-*/
+	*/
+
 
 	//windows azure
 	$dbhost = 'appointmentsrv.database.windows.net';
