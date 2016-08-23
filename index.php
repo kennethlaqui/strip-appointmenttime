@@ -31,7 +31,8 @@
 <body >
 <?php
  
-    echo $_SERVER["REMOTE_ADDR"]; 
+    $ip=$_SERVER['REMOTE_ADDR'];
+	echo "IP address= $ip"; 
 ?>
 <style type="text/css">
 #eventForm .form-control-feedback {
