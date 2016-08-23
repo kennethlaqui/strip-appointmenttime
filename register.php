@@ -60,7 +60,7 @@
 	$branch = $_POST["getlocation"];
 	$msg = $_POST["msg"];
 	$valstd = $_POST["con_mil"];
-	$tsql = "INSERT INTO dbo.c_appointm_x	(clnt_nme,
+	$tsql = "INSERT INTO dbo.c_appointm		(clnt_nme,
 											 emailadr,
 											 cel_numb,
 											 tel_numb,
