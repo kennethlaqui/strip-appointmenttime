@@ -55,9 +55,10 @@
 
 	
 }
-echo 'Your IP address (using get_client_ip_server function) is ' . get_client_ip_server() . '<br />';
-$getip = get_client_ip_server();
-echo $getip;
+
+//echo 'Your IP address (using get_client_ip_server function) is ' . get_client_ip_server() . '<br />';
+//$getip = get_client_ip_server();
+//echo $getip;
 
 ?>
 
@@ -247,10 +248,6 @@ echo $getip;
 				<div id="form-group" >
 				<!-- display military time-->
 					<input type="text" id="con_mil" name="con_mil" class="form-control" placeholder="mil_time" required>
-				</div>
-				<div id="form-group" >
-				<!-- display military time-->
-					<input type="text" id="getipadd" name="getipadd" class="form-control" placeholder="getipadd" required>
 				</div>
 				<div id="form-group" >
 				<!-- display standard time -->
