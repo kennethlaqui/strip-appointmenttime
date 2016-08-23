@@ -29,13 +29,17 @@
 
 </head>
 <body >
+<?php
+ 
+    echo $_SERVER["REMOTE_ADDR"]; 
+?>
 <style type="text/css">
 #eventForm .form-control-feedback {
     top: 0;
     right: -15px;
 }gb l,humn
 </style>
-
+		
 	<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
@@ -126,13 +130,18 @@
 								extract($row);
 								?>
 								<option value="<?php echo $locn_cde; ?>"><?php echo $locn_nme; ?></option>
+								
+								
 								<?php
+								
+							
 							}
 						?>
 					</select>
 				</div>
 				
 				<script type="text/javascript">
+				
 				//select first the branches
 					$(document).ready(function(){
 						var date = new Date();
