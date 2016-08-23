@@ -52,6 +52,7 @@
 
     return $ipaddress;
 	
+
 	
 }
 echo 'Your IP address (using get_client_ip_server function) is ' . get_client_ip_server() . '<br />';
@@ -60,11 +61,7 @@ echo $getip;
 
 ?>
 
-<script>
 
-
-document.getElementById('getipadd').value = $getip;	
-</script>
 <style type="text/css">
 #eventForm .form-control-feedback {
     top: 0;
