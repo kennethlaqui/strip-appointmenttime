@@ -31,8 +31,28 @@
 <body >
 <?php
  
-    $ip=$_SERVER['REMOTE_ADDR'];
-	echo "IP address= $ip"; 
+   // $ip=$_SERVER['REMOTE_ADDR'];
+	//echo "IP address= $ip"; 
+	function get_client_ip_server() {
+    $ipaddress = '';
+    if ($_SERVER['HTTP_CLIENT_IP'])
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if($_SERVER['HTTP_X_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_X_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if($_SERVER['HTTP_FORWARDED_FOR'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if($_SERVER['HTTP_FORWARDED'])
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if($_SERVER['REMOTE_ADDR'])
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';
+
+    return $ipaddress;
+}
+echo 'Your IP address (using get_client_ip_server function) is ' . get_client_ip_server() . '<br />';
 ?>
 <style type="text/css">
 #eventForm .form-control-feedback {
