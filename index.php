@@ -53,6 +53,7 @@
     return $ipaddress;
 }
 echo 'Your IP address (using get_client_ip_server function) is ' . get_client_ip_server() . '<br />';
+$getipaddress = get_client_ip_server();
 ?>
 <style type="text/css">
 #eventForm .form-control-feedback {
