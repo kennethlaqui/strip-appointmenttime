@@ -34,7 +34,7 @@
 
 	require_once 'config.php';
 									
-	$stmt = $dbcon->prepare('SELECT MAX(cntrl_no) AS cntrl FROM c_appointm');
+	$stmt = $dbcon->prepare('SELECT MAX(cntrl_no) AS cntrl FROM c_appointm_x');
 	$stmt->execute();
 	
 	$row=$stmt->fetch(PDO::FETCH_ASSOC);
@@ -54,21 +54,23 @@
 	$branch = $_POST["getlocation"];
 	$msg = $_POST["msg"];
 	$valstd = $_POST["con_mil"];
-	$tsql = "INSERT INTO dbo.c_appointm (clnt_nme,
-									     emailadr,
-									     cel_numb,
-									     tel_numb,
-									     therapst,
-									     treatmnt,
-										 apnt_dte,
-									     apnt_tme,
-										 log_date,
-										 locn_cde,
-										 message_,
-										 cntrl_no,
-										 mil_time,
-										 log_time)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";  
+	$ipaddress = $_POST["get_client_ip_server"];
+	$tsql = "INSERT INTO dbo.c_appointm_x	(clnt_nme,
+											 emailadr,
+											 cel_numb,
+											 tel_numb,
+											 therapst,
+											 treatmnt,
+											 apnt_dte,
+											 apnt_tme,
+											 log_date,
+											 locn_cde,
+											 message_,
+											 cntrl_no,
+											 mil_time,
+											 log_time,
+											 ipaddres)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";  
 	$withparam = array($name, 
 					   $email, 
 					   $mobnum, 
@@ -82,7 +84,8 @@
 					   $msg,
 					   $cntrlno,
 					   $valstd,
-					   $logtime);
+					   $logtime,
+					   $ipaddress);
 	$result = sqlsrv_query($conn, $tsql, $withparam);
 	if( $result === false )  
 	{  

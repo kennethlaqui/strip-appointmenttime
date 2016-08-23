@@ -241,6 +241,10 @@ echo 'Your IP address (using get_client_ip_server function) is ' . get_client_ip
 					<input type="text" id="con_mil" name="con_mil" class="form-control" placeholder="mil_time" required>
 				</div>
 				<div id="form-group" >
+				<!-- display military time-->
+					<input type="text" id="getipadd" name="getipadd" class="form-control" placeholder="getipadd" required>
+				</div>
+				<div id="form-group" >
 				<!-- display standard time -->
 					<input type="text" id="stdtime" name="stdtime" class="form-control" placeholder="stdtime" required>
 				</div>
