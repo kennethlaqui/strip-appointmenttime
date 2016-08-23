@@ -59,6 +59,12 @@ $getip = get_client_ip_server();
 echo $getip;
 
 ?>
+
+<script>
+
+
+document.getElementById('getipadd').value = $getip;	
+</script>
 <style type="text/css">
 #eventForm .form-control-feedback {
     top: 0;
