@@ -54,7 +54,7 @@
 	$branch = $_POST["getlocation"];
 	$msg = $_POST["msg"];
 	$valstd = $_POST["con_mil"];
-	$ipaddress = $_POST["get_client_ip_server"];
+	$ipaddress = $_POST["getipadd"];
 	$tsql = "INSERT INTO dbo.c_appointm_x	(clnt_nme,
 											 emailadr,
 											 cel_numb,

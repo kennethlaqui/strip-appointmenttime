@@ -28,7 +28,7 @@
 	 <link rel="stylesheet" href="css/datepicker.css">
 
 </head>
-<body >
+<body>
 <?php
  
    // $ip=$_SERVER['REMOTE_ADDR'];
@@ -51,9 +51,13 @@
         $ipaddress = 'UNKNOWN';
 
     return $ipaddress;
+	
+	
 }
 echo 'Your IP address (using get_client_ip_server function) is ' . get_client_ip_server() . '<br />';
-$getipaddress = get_client_ip_server();
+$getip = get_client_ip_server();
+echo $getip;
+
 ?>
 <style type="text/css">
 #eventForm .form-control-feedback {
