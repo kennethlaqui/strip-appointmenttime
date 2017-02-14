@@ -1,4 +1,4 @@
-Harem inc. Strip and Browhaus Appointment Time
+Strip and Browhaus Appointment Time
 
 Strip
 Hey Strip Mates!
