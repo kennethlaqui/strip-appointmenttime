@@ -110,7 +110,7 @@
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 text">
 				<h1 class="strstrip">Strip</h1>
-				<h1>Hey Strip Mates! Merry Christmas!</h1>
+				<h1>Hey Strip Mates</h1>
 				<div class="description">
 					<h1>
 						Welcome to the Strip: Ministry of Waxing, the global authority in hair removal with 42 parlours in 9 cities worldwide.
