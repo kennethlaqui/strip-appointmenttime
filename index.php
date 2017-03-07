@@ -86,11 +86,11 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<span class="li-text">
-								Put some text or
+								Follow us on
 							</span> 
 							<a href="#"><strong>links</strong></a> 
 							<span class="li-text">
-								here, or some icons: 
+								
 							</span> 
 							<span class="li-social">
 								<a href="#"><i class="fa fa-facebook"></i></a> 
