@@ -366,7 +366,7 @@
 		</div>
 		</div>
 		</div>
-		
+	<!--	
 	<footer class="text-center">
     <div class="footer-above">
         <div class="container">
@@ -378,7 +378,7 @@
                 <div class="footer-col col-md-4">
                     <h3>Privacy Policy</h3>
                     <ul class="list-inline">
-                        <!-- some social networks -->
+                        <!-- some social networks 
                     </ul>
                 </div>
                 <div class="footer-col col-md-4">
@@ -392,12 +392,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright &copy; Author <?php echo date("Y"); ?>
+                    Copyright &copy; Author <?/*php echo date("Y"); */?>
                 </div>
             </div>
         </div>
     </div>
-</footer>
+</footer> -->
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/charleft.js"></script>
