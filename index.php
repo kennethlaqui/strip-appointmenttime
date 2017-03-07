@@ -88,7 +88,7 @@
 							<span class="li-text">
 								Follow us on
 							</span> 
-							<a href="#"><strong>links</strong></a> 
+							<a href="#"><strong></strong></a> 
 							<span class="li-text">
 								
 							</span> 
